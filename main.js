@@ -11,6 +11,7 @@ const expsenseSelector = document.querySelector(".expense");
 
 
 const submitButton = document.querySelector('#submit');
+
 const transactionLabel = document.querySelector('#transaction');
 const transactionAmt = document.querySelector('#amount');
 
@@ -20,10 +21,12 @@ const transactionHistory = document.querySelector('.history');
 submitButton.addEventListener('click', addTransaction);
 
 
-
 let expenses = 0;
 let income = 0;
 let dps = [income, expenses];
+
+const incomeAmount = document.querySelector('.incomeAmount');
+const expenseAmount = document.querySelector('.expenseAmount');
 
 
 let chartDiv = document.getElementsByClassName('chart');
@@ -82,13 +85,11 @@ function addTransaction(e){
       dps[0] += amt;
       historyUl.classList.add("green");
       transactionAmt.classList.remove("expenseSelector");
-      console.log(historyUl);
     }
     else if(transactionAmt.classList.contains("expenseSelector")){
       dps[1] += amt;
       historyUl.classList.add("red");
       transactionAmt.classList.remove("incomeSelector")
-      console.log(historyUl);
     }else{
       alert("Please Select Either Income or Expense")
       return
@@ -98,7 +99,10 @@ function addTransaction(e){
 	
 	transactionHistory.appendChild(historyUl);
 
-
+  console.log(dps[0], dps[1]);
+  incomeAmount.textContent = `Income: ${dps[0]}`;
+  expenseAmount.textContent = `Expenses: ${dps[1]}`;
+  
 	 chart.update();
   }
 }

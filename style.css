@@ -58,6 +58,12 @@ form{
         text-align: center;
         margin: auto;
     }
+    .incomeExpense{
+        min-width: 50%;
+    }
+    .chart{
+        min-width: 70%;
+    }
 }
 @media screen and (max-width: 700px){
     .moneyType, label, .transactionInput{
@@ -78,6 +84,9 @@ form{
     }
     .chart{
         min-width: 90%;
+    }
+    .incomeExpense{
+        min-width: 70%;
     }
 }
 .income{
@@ -172,6 +181,30 @@ hr{
     text-align: right;
     padding: 0 10px;
     color: #000000;
+}
+.incomeExpense{
+    width: 25%;
+    margin: auto;
+    display: flex;
+    background-color: red;
+    height: 2rem;
+    line-height: 2rem;
+    vertical-align: middle;
+    font-family: 'Lato', sans-serif;
+    font-size: 18px;
+    margin-top: 5vh;
+    cursor: default;
+}
+.incomeAmount, .expenseAmount{
+    flex: 1;
+    max-width: 50%;
+    text-align: center;
+}
+.incomeAmount{
+    background-color: rgba(0, 199, 132, .8);
+}
+.expenseAmount{
+    background-color: rgb(255, 99, 132, .8);
 }
 .chart{
     display: none;
