@@ -142,14 +142,9 @@ hr{
     min-height: 40vh;
     display: block;
     margin: auto;
+    margin-top: 5rem;
     /* transform: rotateX(-50%); */
 }
 canvas{
     display: none;
-}
-.green{
-    border-right: green 1px solid;
-}
-.red{
-    border-right: red 1px solid;
 }
