@@ -60,7 +60,13 @@ function addTransaction(e){
   e.preventDefault();
   let label = transactionLabel.value;
   let amt = parseInt(transactionAmt.value);
+  const historyUl = document.createElement('ul');
+	historyUl.classList.add('historyUl');
+	historyUl.innerHTML = 
+    `<li class="historyLabel">${label}</li>
+    <li class="historyAmt">${amt}</li>`;
 
+  
 
   if(label == ""){
     alert("Please Enter A Valid Label");
@@ -72,27 +78,23 @@ function addTransaction(e){
 	transactionLabel.value = '';
 	transactionAmt.value = '';
 
-	if(transactionAmt.classList.contains("incomeSelector")){
-		dps[0] += amt;
-		transactionAmt.classList.remove("incomeSelector");
-		// historyAmt.classList.add("red");
-		
-	}
-	else if(transactionAmt.classList.contains("expenseSelector")){
-		dps[1] += amt;
-		transactionAmt.classList.remove("expenseSelector")
-		// historyAmt.classList.add("green");
-	}else{
-		alert("Please Select Either Income or Expense")
-		return
-	}
+    if(transactionAmt.classList.contains("incomeSelector")){
+      dps[0] += amt;
+      historyUl.classList.add("green");
+      transactionAmt.classList.remove("expenseSelector");
+      console.log(historyUl);
+    }
+    else if(transactionAmt.classList.contains("expenseSelector")){
+      dps[1] += amt;
+      historyUl.classList.add("red");
+      transactionAmt.classList.remove("incomeSelector")
+      console.log(historyUl);
+    }else{
+      alert("Please Select Either Income or Expense")
+      return
+    }
 
-	
-	const historyUl = document.createElement('ul');
-	historyUl.classList.add('historyUl');
-	historyUl.innerHTML = 
-	`<li class="historyLabel">${label}</li>
-	<li class="historyAmt">${amt}</li>`;
+
 	
 	transactionHistory.appendChild(historyUl);
 

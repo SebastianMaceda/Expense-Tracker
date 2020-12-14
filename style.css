@@ -6,6 +6,7 @@
 body{
     background: linear-gradient(45deg, #323232, #33383d, #354047, #354651, #3d4e5a) no-repeat center center;
     min-height: 110vh;
+    padding-bottom: 150px;
 }
 .monthYear{
     width: 100%;
@@ -42,6 +43,42 @@ form{
     color: #302f2f;
     cursor: pointer;
     width: 45%;
+}
+@media screen and (max-width: 1024px){
+    .moneyType, label, .transactionInput{
+        width: 50%;
+    }
+    #amount, #transaction, #submit, .historyUl, .historyTitle, label{
+        min-width: 50%;
+    }
+    .history{
+        width: 100%;
+    }
+    .historyTitle, hr{
+        text-align: center;
+        margin: auto;
+    }
+}
+@media screen and (max-width: 700px){
+    .moneyType, label, .transactionInput{
+        width: 70%;
+    }
+    #amount, #transaction, #submit, .historyUl, .historyTitle, label{
+        min-width: 70%;
+    }
+    .history{
+        width: 100%;
+    }
+    .historyTitle{
+        text-align: center;
+        margin: auto;
+    }
+    hr{
+        min-width: 60%;
+    }
+    .chart{
+        min-width: 90%;
+    }
 }
 .income{
     background-color: rgba(0, 199, 132);
@@ -138,13 +175,16 @@ hr{
 }
 .chart{
     display: none;
-    width: 50%;
-    min-height: 40vh;
+    width: 40%;
+    min-height: 20vh;
     display: block;
     margin: auto;
     margin-top: 5rem;
     /* transform: rotateX(-50%); */
 }
-canvas{
-    display: none;
+.green{
+    border-right: 5px solid rgb(0, 199, 132);
+}
+.red{
+    border-right: 5px solid rgb(255, 99, 132);
 }
