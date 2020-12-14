@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+<body>
+    <!-- Income (add sources), expenses(sources), pie chart -->
+    <header>    
+        <h1 class="monthYear"></h1>
+    </header>
+    <main>
+        <form>
+            <div class="moneyType">
+                <input type="button" class="income" value="Income" onclick="addIncome()">
+                <input type="button" class="expense" value="Expense" onclick="addExpense()">
+            </div>
+            <label for="transaction">Label</label>
+            <input type="text" placeholder="Enter Transaction Label..." class="transactionInput" id="transaction">
+            <label for="amount">Amount</label>
+            <input type="text" placeholder="Enter Amount..." class="transactionInput" id="amount">
+            <input type="submit" class="transactionInput" id="submit" value="Add Transaction">
+        </form>
+    </main>
+    <ul class="history">
+        <h2 class="historyTitle">History</h2>
+        <hr>
+    </ul>
+    <div class="chart">
+        <canvas id="myChart"></canvas>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
