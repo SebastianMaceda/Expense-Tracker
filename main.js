@@ -14,8 +14,13 @@ const submitButton = document.querySelector('#submit');
 
 const transactionLabel = document.querySelector('#transaction');
 const transactionAmt = document.querySelector('#amount');
-
+let label;
+let amt;
+const hr = document.querySelector('hr');
+let historyAmt;
 const transactionHistory = document.querySelector('.history');
+
+let trashButton;
 
 
 submitButton.addEventListener('click', addTransaction);
@@ -24,6 +29,10 @@ submitButton.addEventListener('click', addTransaction);
 let expenses = 0;
 let income = 0;
 let dps = [income, expenses];
+
+const incomeExpense = document.querySelector('.incomeExpense');
+incomeExpense.style.display = "none";
+
 
 const incomeAmount = document.querySelector('.incomeAmount');
 const expenseAmount = document.querySelector('.expenseAmount');
@@ -61,15 +70,16 @@ let chart = new Chart(ctx, {
 
 function addTransaction(e){
   e.preventDefault();
-  let label = transactionLabel.value;
-  let amt = parseInt(transactionAmt.value);
+  label = transactionLabel.value;
+  amt = parseInt(transactionAmt.value);
   const historyUl = document.createElement('ul');
 	historyUl.classList.add('historyUl');
 	historyUl.innerHTML = 
     `<li class="historyLabel">${label}</li>
-    <li class="historyAmt">${amt}</li>`;
-
-  
+    <li class="historyAmt">${amt}</li>
+    <div class="trashContainer">
+      <i class="fas fa-trash" onclick="trashCan()"></i>
+    </div>`;
 
   if(label == ""){
     alert("Please Enter A Valid Label");
@@ -97,16 +107,20 @@ function addTransaction(e){
 
 
 	
-	transactionHistory.appendChild(historyUl);
+  // transactionHistory.append(historyUl);
+  hr.after(historyUl);
+  incomeExpense.style.display = "flex";
+  historyAmt = document.querySelector(".historyAmt").textContent;  
 
-  console.log(dps[0], dps[1]);
+
   incomeAmount.textContent = `Income: ${dps[0]}`;
   expenseAmount.textContent = `Expenses: ${dps[1]}`;
   
-	 chart.update();
+   chart.update();
+   console.log(historyAmt);
+
   }
 }
-
 function addIncome() {
 	if(transactionAmt.classList.contains("expenseSelector")){
 		transactionAmt.classList.remove("expenseSelector")
@@ -118,4 +132,33 @@ function addExpense() {
 		transactionAmt.classList.remove("incomeSelector")
 	}
 	transactionAmt.classList.add("expenseSelector");
+}
+function trashCan(){
+
+
+  trashButton = document.querySelector('.fa-trash');
+  let historyAmtInt;
+  let trashButtonGrandParent = trashButton.closest("ul");
+  console.log(trashButtonGrandParent.children);
+  // trashButtonGrandParent.remove(trashButtonGrandParent);
+  console.log(dps[0], dps[1]);
+  
+  if(trashButtonGrandParent.classList.contains("green")){
+    dps[0] -= historyAmt;
+    console.log(dps[0] -= historyAmt);
+    incomeAmount.textContent = `Income: ${dps[0]}`;
+    console.log(dps[0], dps[1]);
+  }
+  if(trashButtonGrandParent.classList.contains("red")){
+    dps[1] -= historyAmt;
+    console.log(dps[1] -= historyAmt);
+    // amt -= historyAmt.textContent;
+    expenseAmount.textContent = `Expenses: ${dps[1]}`;
+    console.log(dps[0], dps[1]);
+  }
+  trashButtonGrandParent.remove()
+  console.log(dps[0], dps[1]);
+  // console.log(amt);
+  chart.update();
+
 }
