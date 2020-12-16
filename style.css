@@ -156,16 +156,15 @@ label{
     z-index: 10;
     padding: 25px;
 }
-.historyUl:hover{
+/*.historyUl:hover{
     position: relative;
     right: 50px;
 }
-.fa-trash{
+ .fa-trash{
     width: 30px;
     height: 30px;
     z-index: 15;
     position: absolute;
-    /* left: 50px; */
     display: none;
     opacity: 0;
     background-color: rgb(207, 0, 0);
@@ -195,7 +194,7 @@ label{
 }
 .historyUl:hover > .trashContainer .fa-trash::before{
     display: block;
-}
+} */
 hr{
     color: #ffffff;
     width: 25%;
@@ -262,6 +261,7 @@ hr{
 }
 .green{
     border-right: 5px solid rgb(0, 199, 132);
+    background: 5px solid rgba(0, 199, 132 .2);
 }
 .red{
     border-right: 5px solid rgb(255, 99, 132);

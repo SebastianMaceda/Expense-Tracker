@@ -20,8 +20,6 @@ const hr = document.querySelector('hr');
 let historyAmt;
 const transactionHistory = document.querySelector('.history');
 
-let trashButton;
-
 
 submitButton.addEventListener('click', addTransaction);
 
@@ -76,10 +74,8 @@ function addTransaction(e){
 	historyUl.classList.add('historyUl');
 	historyUl.innerHTML = 
     `<li class="historyLabel">${label}</li>
-    <li class="historyAmt">${amt}</li>
-    <div class="trashContainer">
-      <i class="fas fa-trash" onclick="trashCan()"></i>
-    </div>`;
+    <li class="historyAmt">${amt}</li>`;
+
 
   if(label == ""){
     alert("Please Enter A Valid Label");
@@ -110,20 +106,20 @@ function addTransaction(e){
   // transactionHistory.append(historyUl);
   hr.after(historyUl);
   incomeExpense.style.display = "flex";
-  historyAmt = document.querySelector(".historyAmt").textContent;  
+  historyAmt = document.querySelector(".historyAmt").textContent;
 
 
   incomeAmount.textContent = `Income: ${dps[0]}`;
   expenseAmount.textContent = `Expenses: ${dps[1]}`;
   
    chart.update();
-   console.log(historyAmt);
-
   }
 }
+
+
 function addIncome() {
 	if(transactionAmt.classList.contains("expenseSelector")){
-		transactionAmt.classList.remove("expenseSelector")
+		transactionAmt.classList.remove("expenseSelector");
 	}
 	transactionAmt.classList.add("incomeSelector");
 }
@@ -132,33 +128,4 @@ function addExpense() {
 		transactionAmt.classList.remove("incomeSelector")
 	}
 	transactionAmt.classList.add("expenseSelector");
-}
-function trashCan(){
-
-
-  trashButton = document.querySelector('.fa-trash');
-  let historyAmtInt;
-  let trashButtonGrandParent = trashButton.closest("ul");
-  console.log(trashButtonGrandParent.children);
-  // trashButtonGrandParent.remove(trashButtonGrandParent);
-  console.log(dps[0], dps[1]);
-  
-  if(trashButtonGrandParent.classList.contains("green")){
-    dps[0] -= historyAmt;
-    console.log(dps[0] -= historyAmt);
-    incomeAmount.textContent = `Income: ${dps[0]}`;
-    console.log(dps[0], dps[1]);
-  }
-  if(trashButtonGrandParent.classList.contains("red")){
-    dps[1] -= historyAmt;
-    console.log(dps[1] -= historyAmt);
-    // amt -= historyAmt.textContent;
-    expenseAmount.textContent = `Expenses: ${dps[1]}`;
-    console.log(dps[0], dps[1]);
-  }
-  trashButtonGrandParent.remove()
-  console.log(dps[0], dps[1]);
-  // console.log(amt);
-  chart.update();
-
 }
