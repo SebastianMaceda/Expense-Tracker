@@ -32,6 +32,7 @@ form{
     width: 25%;
     margin: auto;
     justify-content: space-around;
+    margin-top: 50px;
 }
 .income, .expense{
     margin: auto;
@@ -44,7 +45,48 @@ form{
     cursor: pointer;
     width: 45%;
 }
-@media screen and (max-width: 1024px){
+.moneyType, label, .transactionInput{
+    width: 30%;
+}
+#amount, #transaction, #submit, .historyUl, .historyTitle, label{
+    min-width: 30%;
+}
+.history{
+    width: 100%;
+}
+.historyTitle, hr{
+    text-align: center;
+    margin: auto;
+}
+.incomeExpense{
+    min-width: 30%;
+}
+.chart{
+    min-width: 50%;
+}
+@media screen and (max-height: 750px){
+    .monthYear{
+        margin-bottom: 50px;
+    }
+    #submit{
+        margin-bottom: 100px;
+    }
+    .incomeAmount,span{
+        font-size: 16px;
+    }
+}
+@media screen and (max-height: 600px){
+    .monthYear{
+        margin-bottom: 50px;
+    }
+    #submit{
+        margin-bottom: 100px;
+    }
+    hr{
+        top: 15px;
+    }
+}
+@media screen and (max-width: 1244px){
     .moneyType, label, .transactionInput{
         width: 50%;
     }
@@ -65,7 +107,7 @@ form{
         min-width: 70%;
     }
 }
-@media screen and (max-width: 700px){
+@media screen and (max-width: 850px){
     .moneyType, label, .transactionInput{
         width: 70%;
     }
@@ -130,7 +172,7 @@ label{
     font-size: 20px;
 }
 #submit{
-    margin-top: 1.5rem;
+    margin-top: 1.5vh;
     text-align: center;
     background: #6c808f;
     color: #2e2e2e;
@@ -156,45 +198,6 @@ label{
     z-index: 10;
     padding: 25px;
 }
-/*.historyUl:hover{
-    position: relative;
-    right: 50px;
-}
- .fa-trash{
-    width: 30px;
-    height: 30px;
-    z-index: 15;
-    position: absolute;
-    display: none;
-    opacity: 0;
-    background-color: rgb(207, 0, 0);
-}
-.fa-trash, .fa-trash::before{
-    display: none;
-    margin: auto;
-    position: relative;
-    top: 30%;
-    bottom: 0;
-    color: black;
-}
-.trashContainer{
-    position: relative;
-    z-index: 10;
-    width: 15px;
-}
-.historyUl:hover > .trashContainer .fa-trash{
-    display: block;
-    opacity: 1;
-    margin: auto;
-    left: 50px;
-    top: 0%;
-    bottom: 0;
-    height: 7.5vh;
-    width: 50px;
-}
-.historyUl:hover > .trashContainer .fa-trash::before{
-    display: block;
-} */
 hr{
     color: #ffffff;
     width: 25%;
@@ -231,12 +234,12 @@ hr{
     width: 25%;
     margin: auto;
     display: flex;
-    height: 2rem;
-    line-height: 2rem;
+    height: 5vh;
+    line-height: 5vh;
     vertical-align: middle;
     font-family: 'Lato', sans-serif;
     font-size: 18px;
-    margin-top: 5vh;
+    margin-top: 10vh;
     cursor: default;
 }
 .incomeAmount, .expenseAmount{
@@ -256,7 +259,7 @@ hr{
     min-height: 20vh;
     display: block;
     margin: auto;
-    margin-top: 5rem;
+    margin-top: 5vh;
     /* transform: rotateX(-50%); */
 }
 .green{
